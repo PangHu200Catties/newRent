@@ -97,43 +97,74 @@
       <div class="hotrenttitle">
         <p>区域找房</p>
       </div>
-      <ul>
-        <li>
-          <a href=""><img src="../assets/pic2.jpg" style="float: left;width: 210px;height: 150px;position: relative;"> </a>
-          <div class="rent_info">
-            <a href="" target="_blank">
-               <b class="rent_title">雁塔区 南窑头 89排</b>
-            </a>
-            <p class="rent_details"  >
-              <b class="rent_title" style="font-weight: normal">3</b>室<b class="rent_title" style="font-weight: normal">2</b>厅&nbsp
-              <span>|</span>
-              &nbsp<b class="rent_title" style="font-weight: normal">25</b>平米&nbsp
-              <span>|</span>
-              &nbsp<b class="rent_title" style="font-weight: normal">2</b>楼
-            </p>
-            <address class="rent_details" >
-              雁塔区 南窑头 89排9号
-            </address>
-          </div>
+      <ul v-for="(h,index) in house">
+          <li>
+            <a href=""><img src="../assets/pic2.jpg" style="float: left;width: 210px;height: 150px;position: relative;"> </a>
+            <div class="rent_info">
+              <a href="" target="_blank">
+                <b class="rent_title">{{h.htitle}}</b>
+              </a>
+              <p class="rent_details"  >
+                <b class="rent_title" style="font-weight: normal">{{h.type}}</b>&nbsp
+                <span>|</span>
+                &nbsp<b class="rent_title" style="font-weight: normal">{{h.area}}</b>平米&nbsp
+                <span>|</span>
+                &nbsp<b class="rent_title" style="font-weight: normal">{{h.lever}}</b>楼
+              </p>
+              <address class="rent_details" >
+                {{h.address}}
+              </address>
+            </div>
           <div class="rent_price">
             <strong>
-              <b class="rent_title" style="color: #eb5f00;text-align: right;">700</b><span style="color: #eb5f00;text-align: right">/月</span>
+              <b class="rent_title" style="color: #eb5f00;text-align: right;">{{h.price}}</b><span style="color: #eb5f00;text-align: right">/月</span>
             </strong>
           </div>
         </li>
       </ul>
     </div>
+    <el-pagination style="margin: auto"
+      background
+      layout="prev, pager, next"
+      :page-size="this.params.size"
+      v-on:current-change="changePage"
+      :current-page="this.params.page"
+      :total="this.total">
+    </el-pagination>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'homepage',
     data () {
       return {
-
+        house:[],
+        total: 2,
+        params: {
+          page: 1,
+          size: 1
+        }
       }
-    }
+    },
+
+    methods:{
+        select:function () {
+          var url = "api/hListAll/"+this.params.page+"/"+this.params.size
+          axios.get(url).then(res=>{
+              this.total=res.data.total
+              this.house=res.data.list
+          })
+        },
+        changePage:function (page) {
+          this.params.page = page;
+          this.select()
+        }
+    },
+    mounted:function () {
+      this.select()
+    },
   }
 </script>
 <style>
@@ -142,7 +173,7 @@
     font-size: 18px;
     opacity: 0.75;
     line-height: 300px;
-    margin: 0;
+    margin: 0 140px;
   }
 
   .el-carousel__item:nth-child(2n) {
@@ -157,7 +188,6 @@
     width:1180px;
   }
   .showbox{
-
     margin:0 auto;
     width:1180px;
     height: 278px;
@@ -179,7 +209,6 @@
     margin-top: 40px;
     font-weight: 300;
   }
-
   .hotrent{
     height: 486px;
   }
@@ -240,7 +269,6 @@
   }
   .boutique{
     height:520px;
-
   }
   .boutique li{
     float: left;
@@ -250,9 +278,7 @@
 
   }
   .rent ul li{
-
     height: 176px;
-
     border-top: 1px dashed #e6e6e6;
     cursor: pointer;
   }
@@ -279,6 +305,5 @@
     text-overflow: ellipsis;
     height: 30px;
     line-height: 30px;
-
   }
 </style>

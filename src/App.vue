@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <div class="headerbar">
       <ul class="topbar">
         <li class="first">
@@ -22,10 +23,9 @@
         <a>租房</a>
       </div>
       <div class="search-form">
-        <form action="">
-           <input type="text" name="searchbar" class="searchbar-rent" id="search-rent" placeholder="请输入小区名称、地址…" autocomplete="off" maxlength="100" value="" style="color: rgb(153, 153, 153);">
-           <input type="submit" class="search-button"   value="搜索">
-        </form>
+        <input type="text"  v-model="search_cont" name="searchbar" class="searchbar-rent" id="search-rent" placeholder="请输入小区名称、地址…" autocomplete="off" maxlength="100"  style="color: rgb(153, 153, 153);">
+        <router-link :to="{name:'search',query:{cc:this.search_cont}}"><button  class="search-button"   >搜索</button></router-link>
+
       </div>
     </div>
 
@@ -42,9 +42,17 @@ export default {
       return{
         circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
         squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
-        sizeList: ["large", "medium", "small"]
+        sizeList: ["large", "medium", "small"],
+        search_cont:""
       }
+  },
+  methods:{
+    refresh:function () {
+       this.$router.push({name:'search'+new Date(),query:{cc:this.search_cont}})
+
+    }
   }
+
 }
 </script>
 
