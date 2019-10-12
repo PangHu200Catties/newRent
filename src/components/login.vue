@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="container">
     <el-container>
-      <el-header style="font-size: 30px">易租网</el-header>
+
 
       <el-main>
+        <el-header   >易租网</el-header>
       <div id="login">
         <h1>欢迎登录</h1>
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" style="margin: auto;width: 40%" class="demo-ruleForm">
@@ -31,29 +32,51 @@
           </el-form-item>
         </el-form>
       </div>
-      </el-main>
 
       <el-footer style="font-size: 15px">关于易租网 |  联系我们 |  用户协议 |  房贷计算器 |  最新问答 |  网站地图 |  最新房源 |  其它城市 |  友情链接 |  放心搜 |  推广服务 |  渠道招商 </el-footer>
+      </el-main>
+
     </el-container>
   </div>
 
 </template>
 <style>
-  .el-header, .el-footer {
-    background-color: #FFFFFF;
-    color: #22DD22;
-    text-align: left;
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  .el-header{
+    text-align:left;
+    width: 100%;
+    height: 50px;
+    border-bottom:solid 3px;
+    color: #39A631;
+    font-size: 30px;
+
+    line-height: 2;
+    padding: 0 0 0 10px ;
+
+  }
+  .el-footer{
+    width: 100%;
+    height: 50px;
+
+    color: black;
+    font-size: 110px;
+
     text-align: center;
     line-height: 60px;
+    margin-top: 163px;
   }
   .el-main {
     background-color: #E9EEF3;
-    background-image: url("../assets/save.png");
+    background-image: url("../assets/bg.jpg");
     color: #333;
     text-align: center;
     line-height: 100px;
     line-width:40px;
   }
+
   #login{
     background-color: #FFFFFF;
     width: 890px;
@@ -129,7 +152,7 @@
           value: '选项2',
           label: '管理'
         }],
-        value: '用户'
+        value: ''
       };
     },
     methods: {
@@ -141,8 +164,10 @@
           axios.post(url, this.ruleForm).then(res => {
             var r = res.data
 //            alert(r);
-            if (r == '登录成功') {
-              this.$router.push('/user');
+            if (r != '登录失败') {
+                //parmas传参，得用name ，用path不行
+//              query传参，必须用path
+              this.$router.push({path:'/topbar',query:{uname:res.data}});
             } else {
               alert("登录失败,请重新输入用户名及密码!")
             }

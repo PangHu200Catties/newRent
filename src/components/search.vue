@@ -1,6 +1,6 @@
 <template>
   <div class="outbox">
-
+    <div class="result"><div>搜索结果</div></div>
     <div class="rent">
       <ul v-for="(h,index) in house">
         <li>
@@ -25,8 +25,10 @@
               <b class="rent_title" style="color: #eb5f00;text-align: right;">{{h.price}}</b><span style="color: #eb5f00;text-align: right">/月</span>
             </strong>
           </div>
+
         </li>
       </ul>
+      <div class="noData" v-if="this.total==0">暂无结果</div>
     </div>
     <el-pagination
       background
@@ -64,11 +66,16 @@
       },
       select:function () {
 //          这里不能加{{}}，而且要加this
-        this.address = this.$route.query.cc
+         var addr = this.$route.query.cc
+
          var url = "api/hSearch"
-        axios.post(url,{address:this.address,page:this.params.page,size:this.params.size}).then(res=>{
+        axios.post(url,{address:addr,page:this.params.page,size:this.params.size}).then(res=>{
           this.house = res.data.list
           this.total = res.data.total
+          if(res.data == ""){
+            this.total = 0
+          }
+//          if(res.data.total==0)
         })
       }
 
@@ -79,7 +86,7 @@
       }
     },
     mounted:function () {
-        alert(1)
+
       this.select()
     }
 
@@ -87,6 +94,23 @@
 </script>
 }
 <style>
+  .result{
+    border : solid 2px white;
+    height: 50px;
+    border-bottom: solid 2px #62ab00;
+
+    color:green;
+  }
+  .result div{
+    width: 130px;
+    height: 40px;
+    background-color: #62ab00;
+    line-height: 40px;
+    font-size: 20px;
+    margin: 10px 0 0 0px;
+    text-align: center;
+    color: white;
+  }
   .outbox{
     margin:0 auto;
     width:1180px;
@@ -123,4 +147,13 @@
     line-height: 30px;
 
   }
+  .noData{
+    width: 1180px;
+    height: 400px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 40px;
+    color: #62ab00;
+  }
+
 </style>

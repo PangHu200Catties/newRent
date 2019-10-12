@@ -7,6 +7,8 @@ import user from '@/components/user'
 import login from '@/components/login'
 import userinfo from '@/components/userinfo'
 import admin from '@/components/admin'
+import topbar from '@/components/topbar'
+import foot from '@/components/foot'
 import show from '@/components/show'
 
 Vue.use(Router)
@@ -43,6 +45,20 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: admin
+    },{
+      path: '/foot',
+      name: 'foot',
+      component: foot
+    },
+    {
+      path: '/topbar',
+      name: 'topbar',
+      component: topbar,
+      children:[
+
+        {path:"",name:"homepage",component:homepage},
+
+      ]
     },
     {
       path: '/show/:hid',

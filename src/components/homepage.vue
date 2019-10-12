@@ -1,8 +1,10 @@
 <template>
   <div class="body">
     <el-carousel indicator-position="outside">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{ item }}</h3>
+      <el-carousel-item v-for="(p,index) in picture" :key="index">
+        <img :src="p.pic1">
+        <img src="../assets/logo.png">
+
       </el-carousel-item>
     </el-carousel>
   <div class="showbox">
@@ -99,7 +101,7 @@
       </div>
       <ul v-for="(h,index) in house">
           <li>
-            <a href=""><img src="../assets/pic2.jpg" style="float: left;width: 210px;height: 150px;position: relative;"> </a>
+            <a href=""><img :src="h.pic1" style="float: left;width: 210px;height: 150px;position: relative;"> </a>
             <div class="rent_info">
               <a href="" target="_blank">
                 <b class="rent_title">{{h.htitle}}</b>
@@ -123,7 +125,7 @@
         </li>
       </ul>
     </div>
-    <el-pagination style="margin: auto"
+    <el-pagination style="margin: 20px 0 50px 500px"
       background
       layout="prev, pager, next"
       :page-size="this.params.size"
@@ -144,8 +146,12 @@
         total: 2,
         params: {
           page: 1,
-          size: 1
-        }
+          size: 10
+        },
+        picture:[
+          {pic1:"../assets/L1.png"},
+
+        ]
       }
     },
 
@@ -305,5 +311,8 @@
     text-overflow: ellipsis;
     height: 30px;
     line-height: 30px;
+  }
+  element.style {
+    margin: 0 0 0 100px;
   }
 </style>
