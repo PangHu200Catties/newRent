@@ -10,12 +10,25 @@ import admin from '@/components/admin'
 import topbar from '@/components/topbar'
 import foot from '@/components/foot'
 import show from '@/components/show'
+import end_login from '@/components/end_login'
+import end_index from '@/components/end_index'
+import end_users from '@/components/end_users'
+import end_nohouse from '@/components/end_nohouse'
+import end_dohouse from '@/components/end_dohouse'
+import end_checkhouse from '@/components/end_checkhouse'
+import end_landlord from '@/components/end_landlord'
+import end_landlorduser from '@/components/end_landlorduser'
+import end_housepic from '@/components/end_housepic'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
+    {
+      path: '/end_login',
+      name: 'end_login',
+      component: end_login
+    },
     {
       path: '/',
       name: 'homepage',
@@ -64,7 +77,50 @@ export default new Router({
       path: '/show/:hid',
       name: 'show',
       component: show
-    }
+    },
+    {
+      path: '/end_index',
+      name: 'end_index',
+      component: end_index,
+      children:[
+        {
+          path: '/end_users',
+          name: 'end_users',
+          component: end_users,
+        },
+        {
+          path: '/end_dohouse',
+          name: 'end_dohouse',
+          component: end_dohouse
+        },
+        {
+          path: '/end_nohouse',
+          name: 'end_nohouse',
+          component: end_nohouse
+        },
+        {
+          path: '/end_checkhouse',
+          name: 'end_checkhouse',
+          component: end_checkhouse
+        },
+        {
+          path: '/end_landlord',
+          name: 'end_landlord',
+          component: end_landlord
+        },
+        {
+          path: '/end_landlorduser/:ausername',
+          name: 'end_landlorduser',
+          component: end_landlorduser
+        },
+        {
+          path: '/end_housepic',
+          name: 'end_housepic',
+          component: end_housepic
+        }
 
+      ]
+
+    }
   ]
 })
