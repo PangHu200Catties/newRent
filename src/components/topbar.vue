@@ -12,12 +12,16 @@
 
       </ul>
       <div class="userbox">
-
-        <router-link to="/login" v-if="this.username=='登录'" >{{this.username}}</router-link>
-        <router-link to="/userinfo" v-if="this.username!='登录'" >{{this.username}}</router-link>
-        <router-link to="/login" v-if="this.username=='登录'">注册</router-link>
-        <span v-if="this.username!='登录'" @click="loginout()" style="cursor: pointer">注销</span>
-
+        <ul>
+          <li class="username">
+            <router-link to="/login" v-if="this.username=='登录'" >{{this.username}}</router-link>
+            <router-link to="/userinfo" v-if="this.username!='登录'" >{{this.username}}</router-link>
+          </li>
+          <li>
+            <router-link to="/login" v-if="this.username=='登录'">注册</router-link>
+            <span v-if="this.username!='登录'" @click="loginout()" style="cursor: pointer">注销</span>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="header">
@@ -63,6 +67,7 @@
     mounted:function () {
           var url="api/findusername"
           axios.get(url).then(res=>{
+
             this.username = res.data
           })
     }
@@ -117,12 +122,19 @@
   }
   .userbox{
     float: right;
-    text-align: right;
+    text-align: center;
+  } .username{
+      width: 70px;
+    }
+  .userbox ul li{
+    width: 40px;
+    height: 20px;
+    display: inline;
+    float: left;
+    margin-top: 7px;
+    overflow: hidden;
+  }
 
-  }
-  .userbox a{
-    line-height: 33px;
-  }
   .headertitle{
     float: left;
     margin-top: 18px;

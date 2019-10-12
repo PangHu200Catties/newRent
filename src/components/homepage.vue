@@ -1,10 +1,9 @@
 <template>
   <div class="body">
-    <el-carousel indicator-position="outside">
-      <el-carousel-item v-for="(p,index) in picture" :key="index">
-        <img :src="p.pic1">
-        <img src="../assets/logo.png">
-
+    <el-carousel :interval="4000" type="card" height="300px">
+      <el-carousel-item v-for="(item,index) in aa" :key="index">
+        <h3 class="medium"><img :src="item.pic" style="width: 590px;height: 300px"/><!--{{item}}--></h3>
+        <!--<img :src="pic"/>-->
       </el-carousel-item>
     </el-carousel>
   <div class="showbox">
@@ -88,7 +87,7 @@
           <a href=""><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></a>
         </li>
         <li>
-          <a href=""><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></a>
+          <a href=""><img src="../assets/L1.png" style="width: 280px;height: 380px;border-radius: 5px;"></a>
         </li>
         <li>
           <a href=""><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></a>
@@ -148,10 +147,14 @@
           page: 1,
           size: 10
         },
-        picture:[
-          {pic1:"../assets/L1.png"},
-
-        ]
+        aa:[
+          {pic:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3669777138,1414949354&fm=26&gp=0.jpg'},
+          {pic:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3796392365,610477099&fm=26&gp=0.jpg'},
+          {pic:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3809186648,151227260&fm=26&gp=0.jpg'},
+          {pic:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1926586319,1378943605&fm=26&gp=0.jpg'},
+          {pic:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570891104546&di=bea32e4c80765eb83f65b9cdf2de1bf0&imgtype=0&src=http%3A%2F%2Fimg.paishanglai.net%2Fpublic%2Fpcimgs%2F6611%2F156014894326633.jpg'},
+          {pic:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571485654&di=b0fac600dfc6da20501a1c6edb9cce21&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.soufun.com%2Fnews%2F2014_08%2F28%2Fhouse%2F1409223488278_000.jpg'}
+        ],
       }
     },
 
@@ -176,10 +179,10 @@
 <style>
   .el-carousel__item h3 {
     color: #475669;
-    font-size: 18px;
+    font-size: 14px;
     opacity: 0.75;
-    line-height: 300px;
-    margin: 0 140px;
+    line-height: 200px;
+    margin: 0;
   }
 
   .el-carousel__item:nth-child(2n) {
