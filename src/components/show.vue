@@ -50,7 +50,7 @@
 
     <el-main >
           <div class="el-main">
-            <el-form  align="left" ref="form" :model="form" label-width="80px">
+            <el-form  align="left" ref="form"  label-width="80px">
               <el-form-item label="地址:">
                 <span>{{house.address}}</span>
                 <a href="">房价走势</a>
@@ -75,7 +75,7 @@
               <span>{{user.tel}}</span>
             </div>
             <div class="tel">
-              <span>线上租房</span>
+              <el-button type="text" @click="pay(house.htitle,house.price)" size="big">线上租房</el-button>
             </div>
           </div>
         </el-main>
@@ -274,6 +274,10 @@
       jin1:function(index) {
         this.active = index;
       },
+      pay:function (htitle,price) {
+        this.$router.push(
+        {path:'/pay/'+htitle+'/'+price})
+      }
     },
 
 
@@ -298,7 +302,6 @@
           axios.post(url, {uid: uid}).then(res => {
             if (res.data != null) {
               this.user = res.data
-              this.circleUrl.push(this.user.upic)
             }
           })
         }

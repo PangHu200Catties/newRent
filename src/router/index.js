@@ -20,6 +20,7 @@ import end_checkhouse from '@/components/end_checkhouse'
 import end_landlord from '@/components/end_landlord'
 import end_landlorduser from '@/components/end_landlorduser'
 import end_housepic from '@/components/end_housepic'
+import pay from '@/components/pay'
 
 Vue.use(Router)
 
@@ -34,7 +35,7 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: register
-    },,
+    },
     {
       path: '/',
       name: 'homepage',
@@ -81,6 +82,12 @@ export default new Router({
       path: '/show/:hid',
       name: 'show',
       component: show
+    },
+    {
+      path: '/pay/:htitle/:price',
+      name: 'pay',
+      component: pay
+
     },
     {
       path: '/end_index',
