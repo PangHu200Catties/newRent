@@ -12,9 +12,12 @@
 
       </ul>
       <div class="userbox">
-        <router-link to="/login" v-if="this.username==''">登录</router-link>
-        <router-link to="/userinfo" v-if="this.username!=''">{{this.username}}</router-link>
-        <a href=""> 注册</a>
+
+        <router-link to="/login" v-if="this.username=='登录'" >{{this.username}}</router-link>
+        <router-link to="/userinfo" v-if="this.username!='登录'" >{{this.username}}</router-link>
+        <router-link to="/login" v-if="this.username=='登录'">注册</router-link>
+        <span v-if="this.username!='登录'" @click="loginout()" style="cursor: pointer">注销</span>
+
       </div>
     </div>
     <div class="header">
@@ -36,6 +39,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'top',
     data(){
@@ -48,17 +52,19 @@
       }
     },
     methods:{
-      refresh:function () {
-        this.$router.push({name:'search',query:{cc:this.search_cont}})
+      loginout:function () {
+        var url = "api/loginout"
+        axios.get(url).then(res=>{
+          this.$router.push({path:"/login"})
+        })
 
       }
     },
     mounted:function () {
-        if(this.$route.query.uname != null){
-            alert("jinlai")
-          this.username = this.$route.query.uname
-        }
-
+          var url="api/findusername"
+          axios.get(url).then(res=>{
+            this.username = res.data
+          })
     }
 
   }
