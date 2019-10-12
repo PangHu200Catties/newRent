@@ -11,7 +11,7 @@ import topbar from '@/components/topbar'
 import foot from '@/components/foot'
 import show from '@/components/show'
 import register from '@/components/register'
-import end_login from '@/components/end_login'
+
 import end_index from '@/components/end_index'
 import end_users from '@/components/end_users'
 import end_nohouse from '@/components/end_nohouse'
@@ -26,22 +26,14 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/end_login',
-      name: 'end_login',
-      component: end_login
-    },
+
     {
       path: '/register',
       name: 'register',
       component: register
     },
 
-    {
-      path: '/search',
-      name: 'search',
-      component: search
-    },
+
     {
       path: '/user',
       name: 'user',
@@ -71,7 +63,12 @@ export default new Router({
       name: 'topbar',
       component: topbar,
       children:[
-        {path:"",name:"homepage",component:homepage},
+        {path:"/homepage",name:"homepage",component:homepage},
+        {
+          path: '/search',
+          name: 'search',
+          component: search
+        },
       ]
     },
     {
