@@ -178,7 +178,7 @@
             var r = res.data
 //            alert(r);
             if (r == '登录成功') {
-              this.$router.push('/admin');
+              this.$router.push('/end_index');
             } else {
               alert("登录失败,请重新输入用户名及密码!")
             }

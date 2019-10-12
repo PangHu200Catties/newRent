@@ -10,6 +10,7 @@ import admin from '@/components/admin'
 import topbar from '@/components/topbar'
 import foot from '@/components/foot'
 import show from '@/components/show'
+import register from '@/components/register'
 import end_login from '@/components/end_login'
 import end_index from '@/components/end_index'
 import end_users from '@/components/end_users'
@@ -29,6 +30,11 @@ export default new Router({
       name: 'end_login',
       component: end_login
     },
+    {
+      path: '/register',
+      name: 'register',
+      component: register
+    },,
     {
       path: '/',
       name: 'homepage',
@@ -68,9 +74,7 @@ export default new Router({
       name: 'topbar',
       component: topbar,
       children:[
-
         {path:"",name:"homepage",component:homepage},
-
       ]
     },
     {

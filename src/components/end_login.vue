@@ -1,6 +1,6 @@
 <template>
   <div id="hello">
-    <img src="../assets/2.jpg" height="200px" width="200px"/>
+    <img src="../assets/bg.jpg" height="200px" width="200px"/>
     <h1><font color="red">{{ msg }}</font></h1>
     <el-form :inline="true" :model="admin" class="demo-form-inline">
       <el-form-item label="账号:">
