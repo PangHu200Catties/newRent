@@ -100,7 +100,7 @@
       </div>
       <ul v-for="(h,index) in house">
           <li>
-            <a href=""><img :src="h.pic1" style="float: left;width: 210px;height: 150px;position: relative;"> </a>
+            <router-link :to="{name:'show',query:{hid:h.hid}}"><img :src="h.pic1" style="float: left;width: 210px;height: 150px;position: relative;"></router-link>
             <div class="rent_info">
               <a href="" target="_blank">
                 <b class="rent_title">{{h.htitle}}</b>

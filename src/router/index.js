@@ -63,19 +63,19 @@ export default new Router({
       name: 'topbar',
       component: topbar,
       children:[
-        {path:"/homepage",name:"homepage",component:homepage},
+        {path:"/homepage",name:"homepage",component:homepage,meta:{a:true}},
         {
           path: '/search',
           name: 'search',
           component: search
+        },{
+          path: '/show',
+          name: 'show',
+          component: show
         },
       ]
     },
-    {
-      path: '/show/:hid',
-      name: 'show',
-      component: show
-    },
+
     {
       path: '/pay/:htitle/:price',
       name: 'pay',

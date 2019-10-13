@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="body">
       <div >
       <el-header class="body"><h1><span>{{house.htitle}}</span></h1></el-header>
      <el-container  class="body">
@@ -102,7 +102,7 @@
       <div class="jiaju">
         <h3 class="title">房屋配套</h3>
         <i class="el-icon-monitor" style=" width: 50px;height: 50px;">电视</i>
-        <i class="el-icon-toilet-paper" style=" width: 50px;height: 50px;">卫生间</i>
+        <i class="el-icon-toilet-paper" style=" width: 64px;height: 50px;">卫生间</i>
         <i class="el-icon-sunny" style=" width: 50px;height: 50px;">暖气</i>
         <i class="el-icon-tableware" style=" width: 50px;height: 50px;">厨房</i>
         <i class="el-icon-refrigerator" style=" width: 50px;height: 50px;">冰箱</i>
@@ -283,7 +283,7 @@
 
 
     mounted(){
-      var hid = this.$route.params.hid
+      var hid = this.$route.query.hid
       var url = "api/findByHid"
       axios.post(url, {hid: hid}).then(res => {
         if (res.data != null) {
@@ -331,7 +331,10 @@
     border-radius: 1px;
 
   }
-
+  .body{
+    margin:0 auto;
+    width:1180px;
+  }
   .el-main {
     height: 100%;
     background-color: #ffffff;

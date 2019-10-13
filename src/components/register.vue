@@ -159,7 +159,8 @@
       //点击发送邮件方法
       sendemail: function () {
 //          alert((this.user.username).valueOf());
-        if(!this.user.username) {
+        if(this.user.username !="") {
+            alert(1)
           const TIME_COUNT = 30;
           if (!this.timer) {
             this.count = TIME_COUNT;
@@ -185,7 +186,7 @@
             }
           })
         }
-        alert("邮箱不能为空");
+
       },
 
       //点击提交注册方法

@@ -15,7 +15,7 @@
         <ul>
           <li class="username">
             <router-link to="/login" v-if="this.username=='登录'" >{{this.username}}</router-link>
-            <router-link to="/userinfo" v-if="this.username!='登录'" >{{this.username}}</router-link>
+            <router-link :to="{path:'/userinfo',query:{username:this.username}}" v-if="this.username!='登录'" >{{this.username}}</router-link>
           </li>
           <li>
             <router-link to="/login" v-if="this.username=='登录'">注册</router-link>
