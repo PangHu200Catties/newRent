@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div>
     <el-container>
-      <el-main>
-        <el-header   >易租网</el-header>
+      <el-header style="font-size: 30px">易租网</el-header>
+      <el-main >
         <div id="register">
           <h1>注册</h1>
           <el-form :model="user" ref="ruleForm" label-width="100px" class="demo-ruleForm" style="margin: auto;width: 90%">
@@ -84,52 +84,37 @@
       <el-footer style="font-size: 15px">关于易租网 |  联系我们 |  用户协议 |  房贷计算器 |  最新问答 |  网站地图 |  最新房源 |  其它城市 |  友情链接 |  放心搜 |  推广服务 |  渠道招商 </el-footer>
     </el-container>
   </div>
-
 </template>
+
 <style>
-  body{
-    margin: 0;
-    padding: 0;
-  }
-  .el-header{
-    text-align:left;
-    width: 100%;
-    height: 50px;
-    border-bottom:solid 3px;
-    color: #39A631;
-    font-size: 30px;
-
-    line-height: 2;
-    padding: 0 0 0 10px ;
-
-  }
-  .el-footer{
-    width: 100%;
-    height: 50px;
-
-    color: black;
-    font-size: 110px;
-
+  .el-header, .el-footer {
+    background-color: #FFFFFF;
+    color: #22DD22;
+    text-align: left;
     text-align: center;
-    line-height: 60px;
-    margin-top: 163px;
+    line-height: 100px;
+    padding: 0 0 0 10px ;
   }
   .el-main {
     background-color: #E9EEF3;
-    background-image: url("../assets/bg.jpg");
+    background-image: url("../assets/save.png");
     color: #333;
     text-align: center;
-    line-height: 100px;
+    line-height: 80px;
     line-width:40px;
   }
-
   #register{
     background-color: #FFFFFF;
-    width: 890px;
+    width: 600px;
     margin: auto;
-    height:450px;
+    height:550px;
+    opacity: 1;
+  }
+  #nickname{
+    margin-top: 20px;
   }
 </style>
+
 <script>
   import axios from 'axios'
   export default {
@@ -159,34 +144,33 @@
       //点击发送邮件方法
       sendemail: function () {
 //          alert((this.user.username).valueOf());
-        if(this.user.username !="") {
-            alert(1)
-          const TIME_COUNT = 30;
-          if (!this.timer) {
-            this.count = TIME_COUNT;
-            this.show = false;
-            this.timer = setInterval(() => {
-              if (this.count > 0 && this.count <= TIME_COUNT) {
-                this.count--;
-              } else {
-                this.show = true;
-                clearInterval(this.timer);  // 清除定时器
-                this.timer = null;
-              }
-            }, 1000)
-          }
-
-          alert("发送邮件")
-          var url = "api/sendemail/" + this.user.username;
-          axios.get(url).then(res => {
-            if (res.data == "success") {
-              alert("发送成功")
+//          if(!this.user.username) {
+        const TIME_COUNT = 30;
+        if (!this.timer) {
+          this.count = TIME_COUNT;
+          this.show = false;
+          this.timer = setInterval(() => {
+            if (this.count > 0 && this.count <= TIME_COUNT) {
+              this.count--;
             } else {
-              alert("发送失败")
+              this.show = true;
+              clearInterval(this.timer);  // 清除定时器
+              this.timer = null;
             }
-          })
+          }, 1000)
         }
 
+        alert("发送邮件")
+        var url = "api/sendemail/" + this.user.username;
+        axios.get(url).then(res => {
+          if (res.data == "success") {
+            alert("发送成功")
+          } else {
+            alert("发送失败")
+          }
+        })
+        /* }
+         alert("邮箱不能为空");*/
       },
 
       //点击提交注册方法
@@ -210,3 +194,5 @@
     }
   }
 </script>
+
+

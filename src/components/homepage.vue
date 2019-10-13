@@ -33,43 +33,49 @@
     </div>
     <ul>
       <li>
-        <img src="../assets/pic1.jpg" style="width: 380px;height: 248px;border-radius: 5px;">
+        <router-link :to="{name:'show',query:{hid:1}}">
+          <img src="../assets/4.jpg" style="width: 380px;height: 248px;border-radius: 5px;">
+
         <div class="hotmsg">
-          <span class="hotname">驻马店</span>
+          <span class="hotname">南窑头</span>
           <span class="hotmoney">
             <font>￥</font>
             <em>2620</em>/月起
           </span>
           <p>
-            南京市股骨干心机女
+            西安市雁塔区南窑头88排8号
           </p>
-        </div>
+        </div> </router-link>
       </li>
       <li>
-        <img src="../assets/pic1.jpg" style="width: 380px;height: 248px;border-radius: 5px;">
-        <div class="hotmsg">
-          <span class="hotname">驻马店</span>
+        <router-link :to="{name:'show',query:{hid:1}}">
+          <img src="../assets/5.jpg" style="width: 380px;height: 248px;border-radius: 5px;">
+
+          <div class="hotmsg">
+          <span class="hotname">南窑头</span>
           <span class="hotmoney">
             <font>￥</font>
             <em>2620</em>/月起
           </span>
           <p>
-            南京市股骨干心机女
+            西安市雁塔区南窑头88排8号
           </p>
-        </div>
+        </div> </router-link>
       </li>
       <li>
-        <img src="../assets/pic1.jpg" style="width: 380px;height: 248px;border-radius: 5px;">
+        <router-link :to="{name:'show',query:{hid:1}}">
+        <img src="../assets/6.jpg" style="width: 380px;height: 248px;border-radius: 5px;">
         <div class="hotmsg">
-          <span class="hotname">驻马店</span>
+          <span class="hotname">南窑头</span>
           <span class="hotmoney">
             <font>￥</font>
             <em>2620</em>/月起
           </span>
           <p>
-            南京市股骨干心机女
+            西安市雁塔区南窑头88排8号
           </p>
         </div>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -81,16 +87,16 @@
       </div>
       <ul>
         <li>
-          <a href=""><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></a>
+          <router-link :to="{name:'show',query:{hid:1}}"><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></router-link>
         </li>
         <li>
-          <a href=""><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></a>
+          <router-link :to="{name:'show',query:{hid:1}}"><img src="../assets/1.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></router-link>
         </li>
         <li>
-          <a href=""><img src="../assets/L1.png" style="width: 280px;height: 380px;border-radius: 5px;"></a>
+          <router-link :to="{name:'show',query:{hid:1}}"><img src="../assets/6.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></router-link>
         </li>
         <li>
-          <a href=""><img src="../assets/pic2.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></a>
+          <router-link :to="{name:'show',query:{hid:1}}"><img src="../assets/7.jpg" style="width: 280px;height: 380px;border-radius: 5px;"></router-link>
         </li>
       </ul>
     </div>
@@ -100,11 +106,11 @@
       </div>
       <ul v-for="(h,index) in house">
           <li>
-            <router-link :to="{name:'show',query:{hid:h.hid}}"><img :src="h.pic1" style="float: left;width: 210px;height: 150px;position: relative;"></router-link>
+            <router-link :to="{name:'show',query:{hid:h.hid}}"><img :src="h.pic1" style="float: left;width: 210px;height: 150px;position: relative;">
             <div class="rent_info">
-              <a href="" target="_blank">
+              <router-link :to="{name:'show',query:{hid:1}}">
                 <b class="rent_title">{{h.htitle}}</b>
-              </a>
+            </router-link>
               <p class="rent_details"  >
                 <b class="rent_title" style="font-weight: normal">{{h.type}}</b>&nbsp
                 <span>|</span>
@@ -120,7 +126,7 @@
             <strong>
               <b class="rent_title" style="color: #eb5f00;text-align: right;">{{h.price}}</b><span style="color: #eb5f00;text-align: right">/月</span>
             </strong>
-          </div>
+          </div></router-link>
         </li>
       </ul>
     </div>

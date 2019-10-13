@@ -4,10 +4,13 @@
       <el-header class="el-header" height="70px"><font size="6px" color="#5f9ea0" id="cc">{{header}}</font>
         <el-dropdown v-if="this.ausername=='登录'" class="bb">
           <router-link to="end_login"><span class="el-dropdown-link"><&#8194{{ausername}}&#8194></span></router-link>
+          <el-dropdown-menu></el-dropdown-menu>
         </el-dropdown>
-        <el-dropdown v-else="this.ausername=='登录'" class="bb">
+        <el-dropdown v-if="this.ausername!='登录'" class="bb">
           <span class="el-dropdown-link">{{ausername}}</span>&#8195
           <span class="el-dropdown-link" @click="logout()">注销</span>
+          <el-dropdown-menu></el-dropdown-menu>
+
         </el-dropdown>
       </el-header>
       <el-container>

@@ -20,7 +20,13 @@ import end_checkhouse from '@/components/end_checkhouse'
 import end_landlord from '@/components/end_landlord'
 import end_landlorduser from '@/components/end_landlorduser'
 import end_housepic from '@/components/end_housepic'
+import houseList from '@/components/houseList'
+import houseinf from '@/components/houseinf'
+import applyText from '@/components/applyText'
+import updateHouse from '@/components/updateHouse'
 import pay from '@/components/pay'
+import detail from '@/components/detail'
+import ShoppingCart from '@/components/ShoppingCart'
 
 Vue.use(Router)
 
@@ -47,7 +53,12 @@ export default new Router({
     {
       path: '/userinfo',
       name: 'userinfo',
-      component: userinfo
+      component: userinfo,
+      children:[
+        {path: '/houseinf', name: 'houseinf', component: houseinf},
+        {path: '/houseList', name: 'houseList', component: houseList},
+        {path: '/updateHouse', name: 'updateHouse', component: updateHouse},
+      ]
     },
     {
       path: '/admin',
@@ -58,6 +69,20 @@ export default new Router({
       name: 'foot',
       component: foot
     },
+    {
+      path: '/applyText',
+      name: 'applyText',
+      component: applyText
+    },{
+      path: '/detail',
+      name: 'detail',
+      component: detail
+    },{
+      path: '/ShoppingCart',
+      name: 'ShoppingCart',
+      component: ShoppingCart
+    },
+
     {
       path: '/topbar',
       name: 'topbar',

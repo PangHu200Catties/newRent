@@ -4,7 +4,7 @@
     <div class="rent">
       <ul v-for="(h,index) in house">
         <li>
-          <a href=""><img src="../assets/pic2.jpg" style="float: left;width: 210px;height: 150px;position: relative;"> </a>
+          <router-link :to="{name:'show',query:{hid:h.hid}}"><img :src="h.pic1" style="float: left;width: 210px;height: 150px;position: relative;">
           <div class="rent_info">
             <a href="" target="_blank">
               <b class="rent_title">{{h.htitle}}</b>
@@ -25,7 +25,7 @@
               <b class="rent_title" style="color: #eb5f00;text-align: right;">{{h.price}}</b><span style="color: #eb5f00;text-align: right">/月</span>
             </strong>
           </div>
-
+          </router-link>
         </li>
       </ul>
       <div class="noData" v-if="this.total==0">暂无结果</div>
@@ -51,7 +51,7 @@
         total: 0,
         params: {
           page: 1,
-          size: 1
+          size: 6
         },
         address:""
       }
@@ -86,7 +86,6 @@
       }
     },
     mounted:function () {
-
       this.select()
     }
 

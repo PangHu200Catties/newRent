@@ -3,12 +3,10 @@
     <div class="headerbar">
       <ul class="topbar">
         <li class="first">
-          <a href="">首页</a>
+          <router-link to="homepage"  >首页</router-link>
         </li>
-        <li> <a href="">首页</a></li>
-        <li> <a href="">首页</a></li>
-        <li> <a href="">首页</a></li>
-        <li> <a href="">首页</a></li>
+
+
 
       </ul>
       <div class="userbox">

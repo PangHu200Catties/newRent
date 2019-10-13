@@ -276,7 +276,7 @@
       },
       pay:function (htitle,price) {
         this.$router.push(
-        {path:'/pay/'+htitle+'/'+price})
+        {path:'/ShoppingCart',query:{name:htitle,price:price}})
       }
     },
 

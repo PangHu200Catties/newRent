@@ -167,7 +167,7 @@
             if (r != '登录失败') {
               //parmas传参，得用name ，用path不行
 //              query传参，必须用path
-              this.$router.push({path:'/homepage'});
+              this.$router.push({path:'/homepage',query:{username:res.data}});
             } else {
               alert("登录失败,请重新输入用户名及密码!")
             }

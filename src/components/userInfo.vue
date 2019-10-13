@@ -2,7 +2,6 @@
   <div id="App">
     <el-container>
       <el-header class="el-header" style="" height="70px"><font size="4px" color="#5f9ea0" id="cc">{{header}}{{this.ausername}}</font>
-
         <el-dropdown  class="bb"  >
           <router-link :to="{name:'homepage',query:{username:this.ausername}}" style="color: white;text-decoration:none;">返回首页</router-link>
         </el-dropdown>
@@ -22,21 +21,25 @@
 
                 <el-menu-item index="1" @click="tousers()">
                   <i class="el-icon-menu"></i>
-                  <span slot="title"><font size="4px">我的信息</font></span>
+                  <span slot="title"><font size="4px">成为房东</font></span>
                 </el-menu-item>
                 <el-menu-item index="2" @click="landlord()">
                   <i class="el-icon-document"></i>
-                  <span slot="title"><font size="4px">房东信息</font></span>
+                  <span slot="title"><font size="4px">房屋详情</font></span>
                 </el-menu-item>
-                <el-submenu index="3">
-                  <template slot="title" >
-                    <i class="el-icon-location"></i>
-                    <span><font size="4px">房屋管理</font></span>
-                  </template>
-                  <el-menu-item index="3-1" @click="tonohouse()"><font size="4px">未租房屋</font></el-menu-item>
-                  <el-menu-item index="3-2" @click="todohouse()"><font size="4px">已租房屋</font></el-menu-item>
-                  <el-menu-item index="3-3" @click="toaudit()"><font size="4px">房屋审核</font></el-menu-item>
-                </el-submenu>
+                <!--<el-menu-item index="3" @click="landlord()">-->
+                  <!--<i class="el-icon-document"></i>-->
+                  <!--<span slot="title"><font size="4px">房屋修改</font></span>-->
+                <!--</el-menu-item>-->
+                <!--<el-submenu index="3">-->
+                  <!--<template slot="title" >-->
+                    <!--<i class="el-icon-location"></i>-->
+                    <!--<span><font size="4px">房屋管理</font></span>-->
+                  <!--</template>-->
+                  <!--<el-menu-item index="3-1" @click="tonohouse()"><font size="4px">成为房东</font></el-menu-item>-->
+                  <!--<el-menu-item index="3-2" @click="todohouse()"><font size="4px">房屋详情</font></el-menu-item>-->
+                  <!--<el-menu-item index="3-3" @click="toaudit()"><font size="4px">房屋审核</font></el-menu-item>-->
+                <!--</el-submenu>-->
               </el-menu>
             </el-col>
           </el-row>
@@ -70,19 +73,18 @@
         console.log(key, keyPath);
       },
       tousers:function () {
-        this.$router.push({name:'homepage',query:{username:this.ausername}})
+        this.$router.push({name:'houseinf',query:{username:this.ausername}})
       },
       landlord:function () {
-        this.$router.push({name:'end_landlord'})
+        this.$router.push({name:'houseList',query:{username:this.ausername}})
       },
       tonohouse:function () {
-        this.$router.push({name:'end_nohouse'})
+
       },
       todohouse:function () {
-        this.$router.push({name:'end_dohouse'})
       },
       toaudit:function () {
-        this.$router.push({name:'end_checkhouse'})
+        this.$router.push({name:'end_checkhouse',query:{username:this.ausername}})
       },
     }
   }
